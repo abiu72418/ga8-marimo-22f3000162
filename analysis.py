@@ -16,11 +16,13 @@ app = marimo.App(width="medium")
 def __():
     import marimo as mo
     import numpy as np
+    # Email: 22f3000162@ds.study.iitm.ac.in
     return mo, np
 
 
 @app.cell
 def __(mo):
+    # Interactive slider widget
     slider = mo.ui.slider(start=1, stop=100, value=50, label="Select a value:")
     slider
     return slider,
@@ -28,8 +30,10 @@ def __(mo):
 
 @app.cell
 def __(mo, slider):
+    # This cell depends on the slider value
     selected_value = slider.value
     
+    # Dynamic markdown content
     mo.md(f"""
     ## Interactive Analysis
     
@@ -42,6 +46,8 @@ def __(mo, slider):
 
 @app.cell
 def __(mo, np, selected_value):
+    # This cell depends on selected_value from the previous cell
+    # Demonstrating data flow between cells
     data = np.random.randn(selected_value)
     
     mo.md(f"""
